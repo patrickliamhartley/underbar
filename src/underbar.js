@@ -111,16 +111,20 @@
       }
     });
     return failed;
-
-
-
-
-    // TIP: see if you can re-use _.filter() here, without simply
+   // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var dupFreeArray=[];
+
+    _.each(array,function (element,index){
+      if (_.indexOf(dupFreeArray, element)==-1){
+        dupFreeArray.push(element);
+      }
+    });
+    return dupFreeArray;
   };
 
 
