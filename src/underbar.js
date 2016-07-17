@@ -58,14 +58,20 @@
         var key=i;
         var source = collection;
         iterator(value, key, source);
+        }
+      }else{
+      for (var key in collection){
+        iterator(collection[key],key,collection)
       }
 
+     }
+
+    };
 
 
-    }
 
-
-  };
+  
+  
 
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
