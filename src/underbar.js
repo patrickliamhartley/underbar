@@ -229,8 +229,6 @@
 
   _.every = function(collection, iterator) {
 
-      iterator=iterator;
- 
      if (iterator == null){
       iterator=_.identity;
      }
@@ -243,7 +241,17 @@
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
   _.some = function(collection, iterator) {
+  
     // TIP: There's a very clever way to re-use every() here.
+  
+    if (iterator== null){
+      iterator = _.identity;
+      };
+
+   return ! _.every(collection, function(val){
+      return ! iterator(val);
+    });
+ 
   };
 
 
