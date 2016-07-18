@@ -187,8 +187,24 @@
     })
 
     }else{
-    
-    _.each(collection,function(value,key,collection){
+     var specialEach = function(collection, iterator) {
+    if(Array.isArray(collection)){
+
+      for (var i=1;i<collection.length;i++){
+        var value=collection[i];
+        var key=i;
+        var source = collection;
+        iterator(value, key, source);
+        }
+      }else{
+      for (var key in collection){
+        iterator(collection[key],key,collection)
+      }
+
+     }
+
+    };
+    specialEach(collection,function(value,key,collection){
          start=iterator(start, value);
     })
   }
