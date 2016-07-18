@@ -377,10 +377,10 @@
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
 
-
     var args = Array.prototype.slice.call(arguments, 2);
 
     return setTimeout(function(){
+
        return func.apply(this, args); 
      }
      , wait);
@@ -399,6 +399,18 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var shufArray = Array.prototype.slice.call(array, 0);
+    var rando=0;
+    var table= null;
+
+        for (var i=0;i<shufArray.length;i++){
+          rando= Math.floor(Math.random()*(i+1))
+          table= shufArray[i];
+          shufArray[i]=shufArray[rando];
+          shufArray[rando]=table;
+        }
+    return shufArray;
+
   };
 
 
